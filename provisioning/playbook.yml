@@ -1,0 +1,19 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - name: check if apt is updated
+      apt: cache_valid_time=3600 update-cache=yes
+    - name: Install required system packages.
+      apt: "pkg=python-dev state=installed"
+    - name: Install python-software-properties for ppa module
+      apt: "pkg=python-software-properties state=installed"
+    - name: add ubuntugis ppa for newer gdal
+      apt_repository: repo='ppa:ubuntugis/ubuntugis-unstable'
+    - name: add chrislea ppa for newer redis
+      apt_repository: repo='ppa:chris-lea/redis-server'
+    - name: Install GDAL bin from PPA
+      apt: "pkg=gdal-bin=1.10.0-1~precise1 state=installed"
+    - name: Install GDAL headers from PPA
+      apt: "pkg=libgdal-dev state=installed"
+
