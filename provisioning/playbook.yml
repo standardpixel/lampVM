@@ -10,10 +10,19 @@
       apt: "pkg=python-software-properties state=installed"
     - name: add ubuntugis ppa for newer gdal
       apt_repository: repo='ppa:ubuntugis/ubuntugis-unstable'
-    - name: add chrislea ppa for newer redis
-      apt_repository: repo='ppa:chris-lea/redis-server'
+    - name: add Mapnik PPA
+      apt_repository: repo='ppa:mapnik/v2.2.0'
+    - name: add OSM PPA
+      apt_repository: repo='ppa:kakrueger/openstreetmap'
     - name: Install GDAL bin from PPA
       apt: "pkg=gdal-bin=1.10.0-1~precise1 state=installed"
     - name: Install GDAL headers from PPA
       apt: "pkg=libgdal-dev state=installed"
-
+    - name: Install libmapnik
+      apt: "pkg=libmapnik=2.2.0-ubuntu1~precise2 state=installed"
+    - name: Install mapnik python bindings
+      apt: "pkg=python-mapnik state=installed"
+    - name: Install postgis
+      apt: "pkg=postgresql-9.1-postgis-2.0 state=installed"
+    - name: Install osm2pgsql
+      apt: "pkg=osm2pgsql state=installed"
