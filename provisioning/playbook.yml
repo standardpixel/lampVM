@@ -2,6 +2,10 @@
 - hosts: all
   sudo: yes
   tasks:
+
+    #
+    # Install dependancies
+    #
     - name: check if apt is updated
       apt: cache_valid_time=3600 update-cache=yes
     - name: Install My SQL Core 5.5
@@ -16,3 +20,11 @@
       apt: "pkg=php5 state=installed"
     - name: Enable PHP-MySql
       apt: "pkg=php5-mysql state=installed"
+
+    #
+    # Change the root of Apache to the /vagrant root
+    #
+    - name: Move default Apache root
+      action: command mv /var/www /var/www-old
+    - name: Symlink /var/www to /vagrant
+      action: command ln -s /vagrant /var/www
