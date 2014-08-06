@@ -20,6 +20,8 @@
       apt: "pkg=php5 state=installed"
     - name: Enable PHP-MySql
       apt: "pkg=php5-mysql state=installed"
+    - name: Install python-mysqldb which is needed by Ansible
+      apt: "pkg=python-mysqldb state=installed"
 
     #
     # Change the root of Apache to the /vagrant root
@@ -28,3 +30,9 @@
       action: command mv /var/www /var/www-old
     - name: Symlink /var/www to /vagrant
       action: command ln -s /vagrant /var/www
+
+    #
+    # Setup MySQL
+    #
+    - name: Create a user named vagrant and password vagrant
+      mysql_user: name=vagrant password=vagrant priv=*.*:ALL state=present
