@@ -18,3 +18,9 @@ Running the dev server
 
   _The port 8999 might have been changed because it was already being used on this system. The actual port will be shown under this line in the output:_
   `default: Forwarding ports...`
+
+Apache logs
+-----------
+`vagrant ssh -c "tail -f /var/log/apache2/error.log"`
+or
+`vagrant ssh -c "tail -f /var/log/apache2/error.log"`

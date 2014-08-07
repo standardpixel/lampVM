@@ -36,3 +36,9 @@
     #
     - name: Create a user named vagrant and password vagrant
       mysql_user: name=vagrant password=vagrant priv=*.*:ALL state=present
+
+    ###################################################################
+    #
+    # App specific stuff goes here. Don't change anything above without
+    # a pull request
+    #
